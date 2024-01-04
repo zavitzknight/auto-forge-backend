@@ -1,4 +1,10 @@
-cars = [
+user1 = User.where(email: 'test1@example.com').first_or_create(password:'password', password_confirmation:'password')
+user2 = User.where(email: 'test2@example.com').first_or_create(password:'password', password_confirmation:'password')
+
+
+
+
+user1_cars = [
     {
         user_id:1 ,
         make: 'Toyota',
@@ -18,7 +24,9 @@ cars = [
         miles: '12000',
         image: 'test.image',
         cost:'$4000'
-    },
+    }
+]
+user2_cars = [
     {
         user_id:3 ,
         make: 'Ram',
@@ -31,7 +39,12 @@ cars = [
     }
 ]
 
-cars.each do |each_car|
-    Car.create each_car
-    puts "creating car #{each_car}"
+user1_cars.each do |car|
+    user1.cars.create car
+    puts "creating car #{car}"
+end
+
+user2_cars.each do |car|
+    user2.cars.create car
+    puts "creating car #{car}"
 end
