@@ -13,7 +13,8 @@ user1_cars = [
         color: 'black',
         miles: '8000',
         image: 'test.image',
-        cost:'$1000'
+        cost:'$1000',
+        description: 'Exciting new paint job'
     },
     {
         user_id:2 ,
@@ -23,19 +24,21 @@ user1_cars = [
         color: 'white',
         miles: '12000',
         image: 'test.image',
-        cost:'$4000'
+        cost:'$4000',
+        description: 'Added a winch'
     }
 ]
 user2_cars = [
     {
-        user_id:3 ,
+        user_id:2 ,
         make: 'Ram',
         model: '1500',
         year: 2023,
         color: 'silver',
         miles: '1000',
         image: 'test.image',
-        cost:'$500'
+        cost:'$500',
+        description: 'Stealth mode modification'
     }
 ]
 
