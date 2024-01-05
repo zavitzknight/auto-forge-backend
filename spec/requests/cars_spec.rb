@@ -14,7 +14,7 @@ RSpec.describe "Cars", type: :request do
         model: 'Tundra',
         year: 2018,
         color: 'black',
-        miles: '8000',
+        miles: 8000,
         image: 'test.image',
         cost:'$1000',
         description: 'Exciting new paint job'
@@ -23,7 +23,7 @@ RSpec.describe "Cars", type: :request do
 
     car = JSON.parse(response.body)
     expect(response).to have_http_status(200)
-    expect(Car.first['make']).to eq('Toyota')
+    expect(car.first['make']).to eq('Toyota')
     end
   end
 
@@ -32,13 +32,14 @@ RSpec.describe "Cars", type: :request do
     it "creates a car" do
       car_params = {
         car: {
+          user_id: user.id,
           make: 'Toyota',
           model: 'Tundra',
           year: 2018,
           color: 'black',
-          miles: '8000',
+          miles: 8000,
           image: 'test.image',
-          cost:'$1000',
+          cost: '$1000',
           description: 'Exciting new paint job'
         }
       }
@@ -48,7 +49,7 @@ RSpec.describe "Cars", type: :request do
 
       car = Car.first
 
-      expect(car.make).to eq 'Toyota'
+      expect(car.model).to eq 'Tundra'
     end
   end
 
@@ -56,11 +57,12 @@ RSpec.describe "Cars", type: :request do
     it "updates a car's info" do
       car_params = {
         car: {
+          user_id: user.id,
           make: 'Toyota',
           model: 'Tundra',
           year: 2018,
           color: 'black',
-          miles: '8000',
+          miles: 8000,
           image: 'test.image',
           cost:'$1000',
           description: 'Exciting new paint job'
@@ -71,11 +73,12 @@ RSpec.describe "Cars", type: :request do
 
       updated_params = {
         car: {
-          make: 'Toyota',
+          user_id: user.id,
+          make: 'Ford',
           model: 'Tundra',
           year: 2018,
           color: 'black',
-          miles: '8000',
+          miles: 8000,
           image: 'test.image',
           cost:'$1000',
           description: 'Exciting new paint job'
@@ -85,7 +88,7 @@ RSpec.describe "Cars", type: :request do
 
       updated_car = Car.find(car.id)
       expect(response).to have_http_status(200)
-      expect(updated_car.make).to eq "Toyota"
+      expect(updated_car.make).to eq "Ford"
 
     end
   end
@@ -94,6 +97,7 @@ RSpec.describe "Cars", type: :request do
     it "destroys a car" do
       car_params = {
         car: {
+          user_id: user.id,
           make: 'Toyota',
           model: 'Tundra',
           year: 2018,
