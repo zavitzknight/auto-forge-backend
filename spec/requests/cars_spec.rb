@@ -14,7 +14,7 @@ RSpec.describe "Cars", type: :request do
         model: 'Tundra',
         year: 2018,
         color: 'black',
-        miles: '8000',
+        miles: 8000,
         image: 'test.image',
         cost:'$1000',
         description: 'Exciting new paint job'
@@ -28,91 +28,95 @@ RSpec.describe "Cars", type: :request do
   end
 
   
-  # describe "POST /create" do
-  #   it "creates a car" do
-  #     car_params = {
-  #       car: {
-  #         make: 'Toyota',
-  #         model: 'Tundra',
-  #         year: 2018,
-  #         color: 'black',
-  #         miles: '8000',
-  #         image: 'test.image',
-  #         cost:'$1000',
-  #         description: 'Exciting new paint job'
-  #       }
-  #     }
-  #     post '/cars', params: car_params
+  describe "POST /create" do
+    it "creates a car" do
+      car_params = {
+        car: {
+          user_id: user.id,
+          make: 'Toyota',
+          model: 'Tundra',
+          year: 2018,
+          color: 'black',
+          miles: 8000,
+          image: 'test.image',
+          cost: '$1000',
+          description: 'Exciting new paint job'
+        }
+      }
+      post '/cars', params: car_params
 
-  #     expect(response).to have_http_status(200)
+      expect(response).to have_http_status(200)
 
-  #     car = Car.first
+      car = Car.first
 
-  #     expect(car.make).to eq 'Toyota'
-  #   end
-  # end
+      expect(car.model).to eq 'Tundra'
+    end
+  end
 
-  # describe "PATCH /update" do
-  #   it "updates a car's info" do
-  #     car_params = {
-  #       car: {
-  #         make: 'Toyota',
-  #         model: 'Tundra',
-  #         year: 2018,
-  #         color: 'black',
-  #         miles: '8000',
-  #         image: 'test.image',
-  #         cost:'$1000',
-  #         description: 'Exciting new paint job'
-  #       }
-  #     }
-  #     post '/cars/', params: car_params
-  #     car = Car.first
+  describe "PATCH /update" do
+    it "updates a car's info" do
+      car_params = {
+        car: {
+          user_id: user.id,
+          make: 'Toyota',
+          model: 'Tundra',
+          year: 2018,
+          color: 'black',
+          miles: 8000,
+          image: 'test.image',
+          cost:'$1000',
+          description: 'Exciting new paint job'
+        }
+      }
+      post '/cars/', params: car_params
+      car = Car.first
 
-  #     updated_params = {
-  #       car: {
-  #         make: 'Ford',
-  #         model: 'Tundra',
-  #         year: 2018,
-  #         color: 'black',
-  #         miles: '8000',
-  #         image: 'test.image',
-  #         cost:'$1000',
-  #         description: 'Exciting new paint job'
-  #       }
-  #     }
-  #     patch "/cars/#{car.id}", params: updated_params
+      updated_params = {
+        car: {
+          user_id: user.id,
+          make: 'Ford',
+          model: 'Tundra',
+          year: 2018,
+          color: 'black',
+          miles: 8000,
+          image: 'test.image',
+          cost:'$1000',
+          description: 'Exciting new paint job'
+        }
+      }
+      patch "/cars/#{car.id}", params: updated_params
 
-  #     updated_car = Car.find(car.id)
-  #     expect(response).to have_http_status(200)
-  #     expect(updated_car.make).to eq "Ford"
+      updated_car = Car.find(car.id)
+      expect(response).to have_http_status(200)
+      expect(updated_car.make).to eq "Ford"
 
-  #   end
-  # end
+    end
+  end
 
-  # describe "DELETE /destroy" do
-  #   it "destroys a car" do
-  #     car_params = {
-  #       car: {
-  #         make: 'Toyota',
-  #         model: 'Tundra',
-  #         year: 2018,
-  #         color: 'black',
-  #         miles: '8000',
-  #         image: 'test.image',
-  #         cost:'$1000',
-  #         description: 'Exciting new paint job'
-  #       }
-  #     }
-  #     post '/cars', params: car_params
-  #     car = Car.first
+  describe "DELETE /destroy" do
+    it "destroys a car" do
+      car_params = {
+        car: {
+          user_id: user.id,
+          make: 'Toyota',
+          model: 'Tundra',
+          year: 2018,
+          color: 'black',
+          miles: '8000',
+          image: 'test.image',
+          cost:'$1000',
+          description: 'Exciting new paint job'
+        }
+      }
+      post '/cars', params: car_params
+      car = Car.first
 
-  #     delete "/cars/#{car.id}"
+      delete "/cars/#{car.id}"
 
-  #     expect(response).to have_http_status(200)
-  #     expect(Car.find_by(id: car.id)).to be_nil
+      expect(response).to have_http_status(200)
+      expect(Car.find_by(id: car.id)).to be_nil
 
-  #   end
-  # end
+    end
+  end
 end
 
