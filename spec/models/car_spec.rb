@@ -18,12 +18,12 @@ RSpec.describe Car, type: :model do
       cost:'$1000',
       description: 'Exciting new paint job'
     )
-    expect(car.errors[:image]).to include("can't be blank ")
+    expect(car.errors[:make]).to include("can't be blank")
   end
-end
 
   it 'make should be atleast 2 characters long' do  
     car = user.car.create(
+      make: 'H',
       model: 'Tundra',
       year: 2018,
       color: '',
@@ -32,6 +32,6 @@ end
       cost:'$1000',
       description: 'Exciting new paint job'
     )
-    expect(car.errors[:color]).to include("is too short (minimum is 2 characters)")
+    expect(car.errors[:make]).to include("is too short (minimum is 2 characters)")
   end
 end
