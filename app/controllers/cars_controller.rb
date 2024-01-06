@@ -17,7 +17,7 @@ class CarsController < ApplicationController
         car = Car.find(params[:id])
         car.update(car_params)
         if car.valid?
-        render json: car
+            render json: car
         else
             render json: car.errors, status:422
         end
