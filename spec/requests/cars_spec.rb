@@ -122,7 +122,6 @@ RSpec.describe "Cars", type: :request do
 
     end
   end
-end
 
 
 
@@ -294,7 +293,7 @@ describe "cannot update a car without valid attributes" do
   it "doesn't update a car without a make" do
     car_params = {
       car: {
-        user_id: 1,
+        user_id: user.id,
         make: 'Toyota',
         model: 'Tundra',
         year: 2018,
@@ -306,11 +305,10 @@ describe "cannot update a car without valid attributes" do
       }
     }
     post '/cars/', params: car_params
-
+    car = Car.first
     updated_params = {
       car: {
-        user_id: 1,
-        make: 'Ford',
+        make: '',
         model: 'Tundra',
         year: 2018,
         color: 'black',
@@ -320,13 +318,12 @@ describe "cannot update a car without valid attributes" do
         description: 'Exciting new paint job'
       }
     }
-    car = Car.last
+    
     
     patch "/cars/#{car.id}", params: updated_params
-    updated_car = Car.find(car.id)
     expect(response.status).to eq 422
-    json = JSON.parse(response.body)
-    expect(updated_car['make']).to include "can't be blank"
+    car = JSON.parse(response.body)
+    expect(car['make']).to include "can't be blank"
   end
 end
 
@@ -580,6 +577,7 @@ describe "cannot update a car without valid attributes" do
     car = JSON.parse(response.body)
     expect(car['description']).to include "can't be blank"
   end
+end
 end
 
 
