@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :cars
   
 
-  validates :email, :password, :password_confirmation, presence: true
-  validates :email, uniqueness: { case_sensitive: false }
-  validates :password, :password_confirmation, length: { minimum: 6 }
-  validates_confirmation_of :password
+  # validates :email, :password, :password_confirmation, presence: true
+  # validates :email, uniqueness: { case_sensitive: false }
+  # validates :password, :password_confirmation, length: { minimum: 6 }
+  # validates_confirmation_of :password
 end
 

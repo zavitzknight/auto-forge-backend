@@ -6,7 +6,6 @@ user2 = User.where(email: 'test2@example.com').first_or_create(password:'passwor
 
 user1_cars = [
     {
-        user_id:1 ,
         make: 'Toyota',
         model: 'Tundra',
         year: 2018,
@@ -17,7 +16,7 @@ user1_cars = [
         description: 'Exciting new paint job'
     },
     {
-        user_id:2 ,
+
         make: 'Ford',
         model: 'F-150',
         year: 2018,
@@ -30,7 +29,7 @@ user1_cars = [
 ]
 user2_cars = [
     {
-        user_id:2 ,
+
         make: 'Ram',
         model: '1500',
         year: 2023,
