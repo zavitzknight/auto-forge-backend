@@ -66,3 +66,5 @@ gem 'rack-cors'
 gem "rspec-rails", "~> 6.1"
 
 gem "devise", "~> 4.9"
+
+gem 'simplecov', require: false, group: :test
