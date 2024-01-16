@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: auto_forge_backend_production
-  username: auto_forge_backend
-  password: <%= ENV["AUTO_FORGE_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
