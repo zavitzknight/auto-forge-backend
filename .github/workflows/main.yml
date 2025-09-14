@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Send heartbeat
         run: |
-          curl -fsS https://your-render-url/health_check > /dev/null
+          curl -fsS https://autoforge-backend.onrender.com > /dev/null
